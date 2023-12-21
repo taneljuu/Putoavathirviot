@@ -187,6 +187,7 @@ class Putoavat_robotit:
                     self.ennatys = self.pisteet
                     with open("ennatys.txt", "w") as tiedosto:
                         tiedosto.write(str(self.ennatys))
+                #aloitetaan
                 self.aloita()     
 	 
 Putoavat_robotit()
