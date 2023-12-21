@@ -187,7 +187,30 @@ class Putoavat_robotit:
                     self.ennatys = self.pisteet
                     with open("ennatys.txt", "w") as tiedosto:
                         tiedosto.write(str(self.ennatys))
-                #aloitetaan
-                self.aloita()     
+                # avataan lopetusvalikko
+                self.lopetusvalikko()    
+
+    def lopetusvalikko(self):
+        while True:
+            for tapahtuma in pygame.event.get():
+                if tapahtuma.type == pygame.QUIT:
+                    exit()
+                if tapahtuma.type == pygame.KEYDOWN:
+                    if tapahtuma.key == pygame.K_RETURN:
+                        self.aloita()
+                    if tapahtuma.key == pygame.K_ESCAPE:
+                        exit()
+            fontti = pygame.font.SysFont("Arial", 20)
+            if self.pisteet != 1:
+                teksti = fontti.render(f"Peli päättyi. Sait kerättyä {self.pisteet} kolikkoa.", True, (255, 255, 255))
+            if self.pisteet == 1:
+                teksti = fontti.render(f"Peli päättyi. Sait kerättyä {self.pisteet} kolikon.", True, (255, 255, 255))
+            teksti2 = fontti.render(f"Aloita uusi peli painamalla ENTER,", True, (255, 255, 255))
+            teksti3 = fontti.render(f"Lopeta ohjelma painamalla esc.", True, (255, 255, 255))
+            self.naytto.blit(teksti, (150, 150))
+            self.naytto.blit(teksti2, (150, 200))
+            self.naytto.blit(teksti3, (150, 250))
+            pygame.display.flip()
+
 	 
 Putoavat_robotit()
